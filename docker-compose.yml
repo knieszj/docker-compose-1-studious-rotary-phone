@@ -3,18 +3,25 @@ version: '3'
 services:
 
   client:
-    build: client/
+    build:
+      context: ./client
     depends_on:
       - server
     ports:
-    - '3000:3000'
+      - '3000:3000'
+    volumes:
+      - ./client:/client
+      - /client/node_modules
 
   server:
     build: server/
     depends_on:
       - database
     ports:
-    - '3001:3001'
+      - '3001:3001'
+    volumes:
+      - ./server:/server
+      - /server/node_modules
 
   database:
     image: mongo:latest
