@@ -3,50 +3,55 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 const apiPort = 3001
-//
+const mongoose = require('mongoose')
 require('dotenv').config()
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectID;
-const CONNECTION_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.30lbx.mongodb.net/${process.env.MONGO_DATABASE_NAME}?retryWrites=true&w=majority`
-const DATABASE_NAME = 'coffee'
-const collection_name = 'people'
-let database;
-let collection;
-//
 
-app.use(bodyParser.urlencoded({ extended: true }))
+const CoffeeBeans = require('./Routes/CoffeeBeans.route')
+const FrenchPress = require('./Routes/FreedomPress.route')
+
+const CONNECTION_URL = `mongodb+srv://cluster0.30lbx.mongodb.net/${process.env.MONGO_DATABASE_NAME}?retryWrites=true&w=majority`
+const databaseName = 'coffee'
+
+mongoose.connect(CONNECTION_URL,
+    {
+        dbName: `${databaseName}`,
+        user: `${process.env.MONGO_USERNAME}`,
+        pass: `${process.env.MONGO_PASSWORD}`,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log('Mongoose connected us to MongoDB Atlas')
+    })
+
+
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 
+app.use('/api/CoffeeBeans', CoffeeBeans)
+app.use('/api/FreedomPress', FrenchPress)
 
 
-
-
-
-
-
-
-
-
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.use((req, res, next) => {
+    const err = new Error(`Didn't find it`);
+    err.status = 404;
+    next(err)
 })
 
-app.get('/heythere', (req, res) => {
-    res.send('Hey there!')
+//error handler
+app.use((err, req, res, next) => {
+    res.status(err.status || 500)
+    res.send({
+        error: {
+            status: err.status || 500,
+            message: err.message
+        }
+    })
 })
-
 
 app.listen(apiPort, () => {
-    MongoClient.connect(CONNECTION_URL, {useNewUrlParser: true,  useUnifiedTopology: true  }, (error, client) =>{
-        if (error) throw error
-        database = client.db(DATABASE_NAME);
-        collection = database.collection(`${collection_name}`)
-        console.log(`Connected to ${DATABASE_NAME}!`)
-    })
     console.log(`Server running on port ${apiPort}`)
-
 })

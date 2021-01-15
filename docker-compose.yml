@@ -15,15 +15,8 @@ services:
 
   server:
     build: server/
-#    depends_on:
-#      - database
     ports:
       - '3001:3001'
     volumes:
       - ./server:/server
       - /server/node_modules
-
-#    database:
-#      image: mongo:latest
-#      ports:
-#        - "27017:27017"
