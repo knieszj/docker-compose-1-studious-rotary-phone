@@ -9,11 +9,12 @@ router.get('/', ((req, res, next) => {
         .find()
         .exec()
         .then(docs => {
-            console.log("from the super cool MongoDB Atlas", docs);
             if (docs.length > 0) {
+                console.log("from the super cool MongoDB Atlas", docs);
                 res.status(200).json(docs)
             } else if (docs.length === 0) {
                 // if length === 0, the database sent back an empty array and the connection is good but there is no data
+                console.log("Looks like everything worked; however, the document length is 0 because it is empty")
                 res.status(204).json(docs)
             }
             // There is no else statement for if .length is less than 0 since it would be an error and caught there
@@ -39,6 +40,8 @@ router.get(`/:CoffeeBeanID`, (req, res, next) => {
         })
 })
 
+/////
+
 router.post(`/`, (req, res, next) => {
     const coffeeBean = new CoffeeBeanSchema({
         _id: new mongoose.Types.ObjectId(),
@@ -57,6 +60,32 @@ router.post(`/`, (req, res, next) => {
         createdCoffeeBean: coffeeBean
     });
 })
+
+/////
+
+router.patch(`/:CoffeeBeanID`, (req, res, next) => {
+    const id = req.params.CoffeeBeanID;
+    const updateOps = req.body;
+
+    console.log("UpdateOps:  ", updateOps)
+    CoffeeBeanSchema.updateOne(
+        {_id: id},
+        updateOps
+    )
+        .exec()
+        .then(theResult => {
+            console.log("*Patch result: ", theResult);
+            res.status(200).json(theResult);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        })
+})
+
+/////
 
 router.delete(`/:CoffeeBeanID`, (req, res, next) => {
     const id = req.params.CoffeeBeanID;

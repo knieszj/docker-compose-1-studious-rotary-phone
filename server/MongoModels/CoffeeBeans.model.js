@@ -8,7 +8,7 @@ const CoffeeBeanSchema = new Schema({
         require: true,
     },
     weight: {
-        type: String,
+        type: Number,
         require: true,
     },
     price: {

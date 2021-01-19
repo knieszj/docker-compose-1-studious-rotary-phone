@@ -24,7 +24,8 @@ mongoose.connect(CONNECTION_URL,
         user: `${process.env.MONGO_USERNAME}`,
         pass: `${process.env.MONGO_PASSWORD}`,
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        // useFindAndModify: false
     })
     .then(() => {
         console.log('Mongoose connected us to MongoDB Atlas')
