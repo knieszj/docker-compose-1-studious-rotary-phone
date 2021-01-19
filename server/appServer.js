@@ -12,6 +12,12 @@ const FrenchPress = require('./Routes/FreedomPress.route')
 const CONNECTION_URL = `mongodb+srv://cluster0.30lbx.mongodb.net/${process.env.MONGO_DATABASE_NAME}?retryWrites=true&w=majority`
 const databaseName = 'coffee'
 
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json())
+
 mongoose.connect(CONNECTION_URL,
     {
         dbName: `${databaseName}`,
@@ -23,12 +29,6 @@ mongoose.connect(CONNECTION_URL,
     .then(() => {
         console.log('Mongoose connected us to MongoDB Atlas')
     })
-
-
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.use('/api/CoffeeBeans', CoffeeBeans)
