@@ -10,7 +10,7 @@ test(`renders a "div" element`, () => {
     expect(linkElement).toBeInTheDocument()
 })
 
-describe(`Navigation Bar functionality`, ()=>{
+describe(`Navigation Bar functionality and ability to be interacted with`, ()=>{
     beforeEach(() => render(<App/>))
 
     test(`renders the navigation bar from App.js`,()=>{

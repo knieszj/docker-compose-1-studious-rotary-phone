@@ -22,7 +22,7 @@ describe(`The Navigation Bar's elements exist: `, () => {
 
     test(`The first div element contains the text "first"`, ()=>{
         const firstNavElement = screen.getByTestId('first-nav-element-test');
-        expect(firstNavElement).toHaveTextContent("first")
+        expect(firstNavElement).toHaveTextContent("Journey")
     })
 
     test(`There is a div element that is 2 of n`, () => {
@@ -32,7 +32,7 @@ describe(`The Navigation Bar's elements exist: `, () => {
 
     test(`The second div element contains the text "first"`, ()=>{
         const firstNavElement = screen.getByTestId('second-nav-element-test');
-        expect(firstNavElement).toHaveTextContent("second")
+        expect(firstNavElement).toHaveTextContent("Problem")
     })
 
     test(`There is a div element that is 3 of n`, () => {
@@ -42,7 +42,7 @@ describe(`The Navigation Bar's elements exist: `, () => {
 
     test(`The third div element contains the text "first"`, ()=>{
         const firstNavElement = screen.getByTestId('third-nav-element-test');
-        expect(firstNavElement).toHaveTextContent("third")
+        expect(firstNavElement).toHaveTextContent("Resolution")
     })
 
 })
