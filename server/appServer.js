@@ -31,7 +31,7 @@ mongoose.connect(CONNECTION_URL,
         console.log('Mongoose connected us to MongoDB Atlas')
     })
 
-
+//my nice routes
 app.use('/api/CoffeeBeans', CoffeeBeans)
 app.use('/api/FreedomPress', FrenchPress)
 
@@ -41,7 +41,6 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err)
 })
-
 //error handler
 app.use((err, req, res, next) => {
     res.status(err.status || 500)

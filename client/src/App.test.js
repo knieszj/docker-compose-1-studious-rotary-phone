@@ -1,8 +1,32 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+
+
+test(`renders a "div" element`, () => {
+    render(<App/>)
+    const linkElement = screen.getByTestId('main-div-test')
+    expect(linkElement).toBeInTheDocument()
+})
+
+describe(`Navigation Bar functionality`, ()=>{
+    beforeEach(() => render(<App/>))
+
+    test(`renders the navigation bar from App.js`,()=>{
+        const navBar = screen.getByTestId("navigation-bar-test");
+        expect(navBar).toBeInTheDocument();
+    })
+
+    test(`the navigation bar component is contained in the App.js main div`, ()=>{
+        const linkElement = screen.getByTestId('main-div-test')
+        const navBar = screen.getByTestId("navigation-bar-test");
+        expect(linkElement).toContainElement(navBar)
+    })
+
+})
+
+
+
+
+
