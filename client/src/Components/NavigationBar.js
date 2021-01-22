@@ -1,10 +1,12 @@
 import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const NavigationBar = () => {
+
+
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -16,42 +18,52 @@ const NavigationBar = () => {
     const classes = useStyles();
 
     return (
-        <Router>
             <div data-testid={"navigation-bar-test"} className={classes.root}>
+
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="#outlined-buttons"
                     data-testid={"go-home-button"}
                 >
-                    Go Home
+                    <Link to={`/`}>
+                        Go Home
+                    </Link>
                 </Button>
+
+
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="#outlined-buttons"
                     data-testid={'first-nav-element-test'}
                 >
-                    Journey
+                    <Link to={'/journey'}>
+                        Journey
+                    </Link>
                 </Button>
+
+
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="#outlined-buttons"
                     data-testid={'second-nav-element-test'}
                 >
-                    Problem
+                    <Link to={`/problem`}>
+                        Problem
+                    </Link>
                 </Button>
+
+
                 <Button
                     variant="outlined"
                     color="primary"
-                    href="#outlined-buttons"
                     data-testid={'third-nav-element-test'}
                 >
-                    Resolution
+                    <Link to={`/resolution`}>
+                        Resolution
+                    </Link>
                 </Button>
+
             </div>
-        </Router>
     )
 }
 

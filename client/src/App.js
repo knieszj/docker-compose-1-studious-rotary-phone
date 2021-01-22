@@ -3,6 +3,7 @@ import {useState} from "react";
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import LandingPage from "./Components/Pages/LandingPage";
+import Journey from "./Components/Pages/Journey";
 
 
 const App = () => {
@@ -12,8 +13,11 @@ const App = () => {
             <Router>
                 <NavigationBar/>
                 <Switch>
-                    <Route exact path={'/'}>
+                    <Route exact path={`/`}>
                         <LandingPage/>
+                    </Route>
+                    <Route path={`/journey`}>
+                        <Journey/>
                     </Route>
                 </Switch>
 
