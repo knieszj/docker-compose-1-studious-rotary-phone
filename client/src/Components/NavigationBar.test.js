@@ -1,9 +1,13 @@
-import {render, screen, fireEvent, within} from '@testing-library/react';
+import {render, screen, fireEvent, within, waitFor, cleanup} from '@testing-library/react';
 import App from "../App";
+import Journey from "./Pages/Journey";
+import userEvent from "@testing-library/user-event";
+import NavigationBar from "./NavigationBar";
 
 
 describe(`The Navigation Bar's elements exist: `, () => {
     beforeEach(() => render(<App/>))
+
 
     test(`has a "Go Home" button`, () => {
         const goHomeButton = screen.getByTestId("go-home-button");
@@ -16,34 +20,58 @@ describe(`The Navigation Bar's elements exist: `, () => {
     })
 
     test(`There is a div element that is 1 of n`, () => {
-        const firstNavElement = screen.getByTestId('first-nav-element-test');
-        expect(firstNavElement).toBeInTheDocument();
+        const journeyNavElement = screen.getByTestId('journey-button-nav-element-test');
+        expect(journeyNavElement).toBeInTheDocument();
     })
 
     test(`The first div element contains the text "first"`, () => {
-        const firstNavElement = screen.getByTestId('first-nav-element-test');
-        expect(firstNavElement).toHaveTextContent("Journey")
+        const journeyNavElement = screen.getByTestId('journey-button-nav-element-test');
+        expect(journeyNavElement).toHaveTextContent("Journey")
     })
 
     test(`There is a div element that is 2 of n`, () => {
-        const secondNavElement = screen.getByTestId('second-nav-element-test');
-        expect(secondNavElement).toBeInTheDocument();
+        const problemNavElement = screen.getByTestId('problem-button-nav-element-test');
+        expect(problemNavElement).toBeInTheDocument();
     })
 
     test(`The second div element contains the text "first"`, () => {
-        const secondNavElement = screen.getByTestId('second-nav-element-test');
-        expect(secondNavElement).toHaveTextContent("Problem")
+        const problemNavElement = screen.getByTestId('problem-button-nav-element-test');
+        expect(problemNavElement).toHaveTextContent("Problem")
     })
 
     test(`There is a div element that is 3 of n`, () => {
-        const thirdNavElement = screen.getByTestId('third-nav-element-test');
-        expect(thirdNavElement).toBeInTheDocument();
+        const resolutionNavElement = screen.getByTestId('resolution-button-nav-element-test');
+        expect(resolutionNavElement).toBeInTheDocument();
     })
 
     test(`The third div element contains the text "first"`, () => {
-        const thirdNavElement = screen.getByTestId('third-nav-element-test');
-        expect(thirdNavElement).toHaveTextContent("Resolution")
+        const resolutionNavElement = screen.getByTestId('resolution-button-nav-element-test');
+        expect(resolutionNavElement).toHaveTextContent("Resolution")
     })
 
 })
 
+
+describe(`When the "Journey" button is pressed`, () => {
+    beforeEach(() => {
+        render(<App/>)
+    })
+
+    test(`the Journey component is rendered`,  () => {
+        userEvent.click(screen.getByTestId('go-home-button'))
+        const journeyPage = screen.getByTestId('landingpage-main-wrapper-div-test')
+        expect(journeyPage).toBeInTheDocument()
+    })
+})
+
+describe(`When the "Home"/"Landing Page" button is pressed`, ()=>{
+    beforeEach(() => {
+        render(<App/>)
+    })
+
+    test(`the landing page is displayed`,  () => {
+        userEvent.click(screen.getByTestId('go-home-button'))
+        const landingPage = screen.getByTestId('landingpage-main-wrapper-div-test')
+        expect(landingPage).toBeInTheDocument()
+    })
+})

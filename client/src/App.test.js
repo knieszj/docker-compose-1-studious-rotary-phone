@@ -1,4 +1,4 @@
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, waitFor, waitForElementToBeRemoved, cleanup} from '@testing-library/react';
 import App from './App';
 import LandingPage from "./Components/Pages/LandingPage";
 import Journey from "./Components/Pages/Journey";
@@ -9,6 +9,7 @@ test(`renders a "div" element`, () => {
     const linkElement = screen.getByTestId('main-div-test')
     expect(linkElement).toBeInTheDocument()
 })
+
 
 describe(`Navigation Bar functionality and ability to be interacted with`, () => {
     beforeEach(() => render(<App/>))
@@ -26,22 +27,7 @@ describe(`Navigation Bar functionality and ability to be interacted with`, () =>
 
 })
 
-describe(`When the "Journey" button is pressed`, () => {
-    beforeEach(() => render(<App/>))
 
-    test(`the Journey component is rendered`, () => {
-        //setup and verify
-        const wrapperElement = screen.getByTestId('landingpage-main-wrapper-div-test');
-        expect(wrapperElement).toBeInTheDocument();
-
-        const firstNavElement = screen.getByTestId('first-nav-element-test');
-        expect(firstNavElement).toHaveTextContent("Journey")
-
-        
-
-    })
-
-})
 
 
 

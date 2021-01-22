@@ -18,52 +18,44 @@ const NavigationBar = () => {
     const classes = useStyles();
 
     return (
-            <div data-testid={"navigation-bar-test"} className={classes.root}>
-
+        <div data-testid={"navigation-bar-test"} className={classes.root}>
+            <Link to={`/home`}>
                 <Button
                     variant="outlined"
                     color="primary"
                     data-testid={"go-home-button"}
                 >
-                    <Link to={`/`}>
-                        Go Home
-                    </Link>
+                    Go Home
                 </Button>
-
-
+            </Link>
+            <Link to={'/journey'}>
                 <Button
                     variant="outlined"
                     color="primary"
-                    data-testid={'first-nav-element-test'}
+                    data-testid={'journey-button-nav-element-test'}
                 >
-                    <Link to={'/journey'}>
-                        Journey
-                    </Link>
+                    Journey
                 </Button>
-
-
+            </Link>
+            <Link to={`/problem`}>
                 <Button
                     variant="outlined"
                     color="primary"
-                    data-testid={'second-nav-element-test'}
+                    data-testid={'problem-button-nav-element-test'}
                 >
-                    <Link to={`/problem`}>
-                        Problem
-                    </Link>
+                    Problem
                 </Button>
-
-
+            </Link>
+            <Link to={`/resolution`}>
                 <Button
                     variant="outlined"
                     color="primary"
-                    data-testid={'third-nav-element-test'}
+                    data-testid={'resolution-button-nav-element-test'}
                 >
-                    <Link to={`/resolution`}>
-                        Resolution
-                    </Link>
+                    Resolution
                 </Button>
-
-            </div>
+            </Link>
+        </div>
     )
 }
 
