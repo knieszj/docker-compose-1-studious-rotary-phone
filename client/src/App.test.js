@@ -2,8 +2,6 @@ import {render, screen, fireEvent} from '@testing-library/react';
 import App from './App';
 
 
-
-
 test(`renders a "div" element`, () => {
     render(<App/>)
     const linkElement = screen.getByTestId('main-div-test')
