@@ -30,9 +30,9 @@ const ResolutionPage = () => {
     let mediaCard = () => {
         return coffeeBeanList.map(coffeeBeanData => {
             return (
-                <>
-                    {`${coffeeBeanData.name} \n`}
-                </>
+                <div key={coffeeBeanData._id}>
+                    <ImgMediaCard coffeeBeanData={coffeeBeanData} />
+                </div>
             )
         })
     }
@@ -41,7 +41,6 @@ const ResolutionPage = () => {
     return (
 
         <div data-testid={`resolution-page-main-wrapper-test`}>
-            {temporaryText}
             {mediaCard()}
 
         </div>

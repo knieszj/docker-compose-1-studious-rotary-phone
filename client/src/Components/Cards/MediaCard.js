@@ -14,35 +14,35 @@ const useStyles = makeStyles({
     },
 });
 
-const ImgMediaCard = (props) => {
+const ImgMediaCard = ({coffeeBeanData}) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
+                    // image="/static/images/cards/contemplative-reptile.jpg"
+                    image="https://source.unsplash.com/random/345x400"
                     title="Contemplative Reptile"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                        {coffeeBeanData.name || "Lizard"}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur autem eius rem voluptates. Atque explicabo molestiae odio praesentium recusandae!
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary">
-                    Share
+                    {`${coffeeBeanData.weight} oz` || "Share"}
                 </Button>
                 <Button size="small" color="primary">
-                    Learn More
+                    {`\$${coffeeBeanData.price}` || "Learn More"}
                 </Button>
             </CardActions>
         </Card>
