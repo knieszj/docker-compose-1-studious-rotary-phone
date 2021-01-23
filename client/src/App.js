@@ -3,7 +3,7 @@ import {useState} from "react";
 import {BrowserRouter as Router, Link, Switch, Route, Redirect} from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import LandingPage from "./Components/Pages/LandingPage";
-import Journey from "./Components/Pages/Journey";
+import JourneyPage from "./Components/Pages/JourneyPage";
 import ProblemPage from "./Components/Pages/ProblemPage";
 
 
@@ -18,7 +18,7 @@ const App = () => {
                         <Redirect to={'/home'}/>
                     </Route>
                     <Route path={`/journey`}>
-                        <Journey/>
+                        <JourneyPage/>
                     </Route>
                     <Route path={`/home`}>
                         <LandingPage/>

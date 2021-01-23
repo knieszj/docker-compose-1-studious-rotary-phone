@@ -1,7 +1,7 @@
 import {render, screen, fireEvent, waitFor, waitForElementToBeRemoved, cleanup} from '@testing-library/react';
 import App from './App';
 import LandingPage from "./Components/Pages/LandingPage";
-import Journey from "./Components/Pages/Journey";
+import JourneyPage from "./Components/Pages/JourneyPage";
 import NavigationBar from "./Components/NavigationBar";
 
 test(`renders a "div" element`, () => {

@@ -1,10 +1,10 @@
 import {render, screen, fireEvent, within, waitFor} from '@testing-library/react';
-import Journey from "./Journey";
+import JourneyPage from "./JourneyPage";
 import App from "../../App";
 
 describe(`The Journey page has`,  () =>{
 
-    beforeEach(()=> render(<Journey/>))
+    beforeEach(()=> render(<JourneyPage/>))
 
     test(`the main html wrapper to wrap child elements and components`, ()=>{
         const wrapperElement = screen.getByTestId('journey-wrapper-element-test');

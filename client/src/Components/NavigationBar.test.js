@@ -1,6 +1,6 @@
 import {render, screen, fireEvent, within, waitFor, cleanup, act} from '@testing-library/react';
 import App from "../App";
-import Journey from "./Pages/Journey";
+import JourneyPage from "./Pages/JourneyPage";
 import userEvent from "@testing-library/user-event";
 import NavigationBar from "./NavigationBar";
 import ProblemPage from "./Pages/ProblemPage";
