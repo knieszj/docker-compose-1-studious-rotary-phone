@@ -5,6 +5,7 @@ import NavigationBar from "./Components/NavigationBar";
 import LandingPage from "./Components/Pages/LandingPage";
 import JourneyPage from "./Components/Pages/JourneyPage";
 import ProblemPage from "./Components/Pages/ProblemPage";
+import ResolutionPage from "./Components/Pages/ResolutionPage";
 
 
 const App = () => {
@@ -25,6 +26,9 @@ const App = () => {
                     </Route>
                     <Route path={`/problem`}>
                         <ProblemPage/>
+                    </Route>
+                    <Route path={`/resolution`}>
+                        <ResolutionPage/>
                     </Route>
                 </Switch>
 

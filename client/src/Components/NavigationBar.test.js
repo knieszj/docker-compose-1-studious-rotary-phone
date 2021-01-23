@@ -93,6 +93,8 @@ describe(`When the Resolution page button is clicked in teh Navigation bar`, () 
     beforeEach(() => render(<App/>))
 
     test(`the Resolution page is displayed`,()=>{
-
+        userEvent.click(screen.getByTestId(`resolution-button-nav-element-test`))
+        const resolutionPage = screen.getByTestId(`resolution-page-main-wrapper-test`)
+        expect(resolutionPage).toBeInTheDocument()
     })
 })
