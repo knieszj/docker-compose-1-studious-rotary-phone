@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Link, Switch, Route, Redirect} from "react-rout
 import NavigationBar from "./Components/NavigationBar";
 import LandingPage from "./Components/Pages/LandingPage";
 import Journey from "./Components/Pages/Journey";
+import ProblemPage from "./Components/Pages/ProblemPage";
 
 
 const App = () => {
@@ -21,6 +22,9 @@ const App = () => {
                     </Route>
                     <Route path={`/home`}>
                         <LandingPage/>
+                    </Route>
+                    <Route path={`/problem`}>
+                        <ProblemPage/>
                     </Route>
                 </Switch>
 

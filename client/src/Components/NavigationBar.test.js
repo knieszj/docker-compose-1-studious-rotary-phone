@@ -1,8 +1,10 @@
-import {render, screen, fireEvent, within, waitFor, cleanup} from '@testing-library/react';
+import {render, screen, fireEvent, within, waitFor, cleanup, act} from '@testing-library/react';
 import App from "../App";
 import Journey from "./Pages/Journey";
 import userEvent from "@testing-library/user-event";
 import NavigationBar from "./NavigationBar";
+import ProblemPage from "./Pages/ProblemPage";
+import {unmountComponentAtNode} from "react-dom";
 
 
 describe(`The Navigation Bar's elements exist: `, () => {
@@ -48,7 +50,6 @@ describe(`The Navigation Bar's elements exist: `, () => {
         const resolutionNavElement = screen.getByTestId('resolution-button-nav-element-test');
         expect(resolutionNavElement).toHaveTextContent("Resolution")
     })
-
 })
 
 
@@ -56,22 +57,42 @@ describe(`When the "Journey" button is pressed`, () => {
     beforeEach(() => {
         render(<App/>)
     })
+    let container = null;
 
-    test(`the Journey component is rendered`,  () => {
-        userEvent.click(screen.getByTestId('go-home-button'))
-        const journeyPage = screen.getByTestId('landingpage-main-wrapper-div-test')
+
+    test(`the Journey component is rendered`, () => {
+        userEvent.click(screen.getByTestId('journey-button-nav-element-test'))
+        const journeyPage = screen.getByTestId('journey-wrapper-element-test')
         expect(journeyPage).toBeInTheDocument()
     })
 })
 
-describe(`When the "Home"/"Landing Page" button is pressed`, ()=>{
+describe(`When the "Home"/"Landing Page" button is pressed`, () => {
     beforeEach(() => {
         render(<App/>)
     })
 
-    test(`the landing page is displayed`,  () => {
+    test(`the landing page is displayed`, () => {
         userEvent.click(screen.getByTestId('go-home-button'))
         const landingPage = screen.getByTestId('landingpage-main-wrapper-div-test')
         expect(landingPage).toBeInTheDocument()
+    })
+})
+
+describe(`When the Problem page button is clicked in the Navigation bar`, () => {
+    beforeEach(() => render(<App/>))
+
+    test(`the Problem page is displayed`, () => {
+        userEvent.click(screen.getByTestId('problem-button-nav-element-test'))
+        const problemPage = screen.getByTestId(`problem-page-wrapper-test`)
+        expect(problemPage).toBeInTheDocument()
+    })
+})
+
+describe(`When the Resolution page button is clicked in teh Navigation bar`, () => {
+    beforeEach(() => render(<App/>))
+
+    test(`the Resolution page is displayed`,()=>{
+
     })
 })
