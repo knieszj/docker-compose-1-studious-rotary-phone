@@ -10,11 +10,11 @@ router.get('/', ((req, res, next) => {
         .exec()
         .then(docs => {
             if (docs.length > 0) {
-                console.log("from the super cool MongoDB Atlas", docs);
+                // console.log("from the super cool MongoDB Atlas", docs);
                 res.status(200).json(docs)
             } else if (docs.length === 0) {
                 // if length === 0, the database sent back an empty array and the connection is good but there is no data
-                console.log("Looks like everything worked; however, the document length is 0 because it is empty")
+                // console.log("Looks like everything worked; however, the document length is 0 because it is empty")
                 res.status(204).json(docs)
             }
             // There is no else statement for if .length is less than 0 since it would be an error and caught there
@@ -31,7 +31,7 @@ router.get(`/:CoffeeBeanID`, (req, res, next) => {
     CoffeeBeanSchema.findById(id)
         .exec()
         .then(doc => {
-            console.log("From the MongoDB Atlas database", doc)
+            // console.log("From the MongoDB Atlas database", doc)
             res.status(200).json(doc)
         })
         .catch(err => {
@@ -74,7 +74,7 @@ router.patch(`/:CoffeeBeanID`, (req, res, next) => {
     )
         .exec()
         .then(theResult => {
-            console.log("*Patch result: ", theResult);
+            // console.log("*Patch result: ", theResult);
             res.status(200).json(theResult);
         })
         .catch(err => {
