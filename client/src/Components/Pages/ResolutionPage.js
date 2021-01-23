@@ -6,7 +6,7 @@ const ResolutionPage = () =>{
 
     return(
         <div data-testid={`resolution-page-main-wrapper-test`}>
-            {temporaryText.split('').sort((a, b) => a-b).join('')}
+            {temporaryText}
         </div>
     )
 }
